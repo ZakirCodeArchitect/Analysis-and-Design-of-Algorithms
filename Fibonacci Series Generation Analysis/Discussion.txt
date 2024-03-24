@@ -1,0 +1,129 @@
+
+// Iterative Approach
+
+Code:
+
+void fibonacciIterative(int n) {
+    int t1 = 0, t2 = 1, nextTerm = 0;
+
+    for (int i = 1; i <= n; ++i) {
+        if(i == 1) {
+            continue;
+        }
+        if(i == 2) {
+            continue;
+        }
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+}
+
+
+
+In the provided iterative function for generating Fibonacci series, there's a loop that iterates from 1 to n, where each iteration calculates the next Fibonacci number. Let's analyze the time complexity of this function:
+
+Initialization:
+
+Initializing variables t1, t2, and nextTerm takes constant time, O(1).
+Loop:
+
+The loop iterates from 1 to n, so it runs n times.
+Inside the loop, the operations performed are constant time operations:
+Checking if i is equal to 1 or 2 (if (i == 1) and if (i == 2)), which are basic comparisons and have constant time complexity.
+Calculating the next Fibonacci number using nextTerm = t1 + t2, which involves basic arithmetic operations and assignment, also constant time.
+Updating the values of t1 and t2, which are also constant time operations.
+Therefore, the time complexity of the loop is O(n).
+Conclusion:
+
+All operations inside the loop are constant time operations.
+As the loop runs n times, the overall time complexity of the function is determined by the loop, which is O(n).
+So, the time complexity of the provided fibonacciIterative function is O(n).
+
+
+
+// Recusrive Approach 
+
+Code: 
+
+int fibonacciRecursive(int n) {
+    if(n <= 1)
+        return n;
+    return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
+
+// Function to print the Fibonacci series using the recursive approach
+void printFibonacciRecursive(int n) {
+    cout << "Recursive approach: ";
+    for (int i = 0; i < n; i++) {
+        cout << fibonacciRecursive(i) << ", ";
+    }
+    cout << "\\b\\b "; // Backspace to remove the last comma
+    cout << endl;
+}
+
+
+To determine the time complexity of the provided recursive Fibonacci function and the function to print the Fibonacci series recursively, let's analyze them step by step:
+
+Recursive Fibonacci Function (fibonacciRecursive):
+
+The function calculates the nth Fibonacci number recursively by summing up the (n-1)th and (n-2)th Fibonacci numbers.
+It has a base case when n is 0 or 1, where it simply returns n.
+For n > 1, it makes two recursive calls (fibonacciRecursive(n - 1) and fibonacciRecursive(n - 2)).
+Time Complexity Analysis:
+
+For each call to fibonacciRecursive, two more recursive calls are made until reaching the base cases.
+This results in a binary tree structure of recursive calls.
+The height of this tree is n, as each recursive call decreases n by at least 1 in each step.
+Therefore, the number of function calls is exponential in terms of n.
+Hence, the time complexity of this recursive function is O(2^n).
+Printing Fibonacci Series Recursively (printFibonacciRecursive):
+
+This function iterates from 0 to n-1 and prints each Fibonacci number by calling fibonacciRecursive for each i.
+Since each call to fibonacciRecursive has a time complexity of O(2^n), and it's called n times, the overall time complexity of this function will be O(n * 2^n).
+In summary, the time complexity of fibonacciRecursive function is O(2^n), and the time complexity of printFibonacciRecursive function is O(n * 2^n). These complexities indicate that the recursive approach is highly inefficient for large values of n due to its exponential growth.
+
+
+Comparison :
+
+In terms of asymptotic notations:
+
+Iterative Approach:
+
+Time Complexity: O(n)
+Explanation: The iterative approach has a linear time complexity, meaning the time taken by the algorithm grows linearly with the size of the input (n). As the input size increases, the time taken increases proportionally. This behavior is represented by the Big O notation O(n), where n is the size of the input.
+Recursive Approach:
+
+Time Complexity: O(2^n)
+Explanation: The recursive approach has an exponential time complexity. The number of function calls grows exponentially with the input size (n). Each function call branches into two more calls until reaching the base cases. As a result, the time taken increases exponentially with the input size. This behavior is represented by the Big O notation O(2^n), indicating exponential growth.
+Comparison:
+The iterative approach has a much better time complexity compared to the recursive approach.
+While the time complexity of the iterative approach grows linearly with the input size (n), the time complexity of the recursive approach grows exponentially with the input size.
+For large values of n, the recursive approach becomes highly inefficient due to its exponential time complexity, making it impractical for real-world applications where efficiency matters.
+Therefore, in terms of asymptotic notations, the iterative approach is preferred over the recursive approach for generating Fibonacci series, especially for larger values of n.
+
+
+
+// Execution Time Details about comparison : 
+
+Analysis of Execution Time Data:
+Trends in Execution Time:
+
+For the iterative approach, the execution time generally increases as n increases, showing a trend of linear growth.
+For the recursive approach, the execution time increases more rapidly as n increases, showing a trend of exponential growth.
+Comparative Performance:
+
+The iterative approach generally exhibits faster execution times compared to the recursive approach for smaller values of n.
+However, as n increases, the recursive approach quickly becomes significantly slower than the iterative approach due to its exponential time complexity.
+Comparison with Asymptotic Notation:
+Iterative Approach:
+
+The empirical data aligns with the theoretical time complexity of O(n) for the iterative approach. As n increases, the execution time increases linearly, consistent with the expected linear growth.
+Recursive Approach:
+
+The empirical data aligns with the theoretical time complexity of O(2^n) for the recursive approach. As n increases, the execution time increases exponentially, consistent with the expected exponential growth.
+
+Conclusion:
+The iterative approach demonstrates superior performance for generating Fibonacci series compared to the recursive approach, especially for larger values of n.
+The empirical data corroborates the theoretical time complexities derived from asymptotic notation analysis.
+When efficiency is crucial, such as in real-world applications, the iterative approach is preferred over the recursive approach for generating Fibonacci series due to its significantly faster execution times.
